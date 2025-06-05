@@ -33,6 +33,7 @@ export default [
                 node: true,
                 NodeJS: true,
                 setTimeout: true,
+                require: true,
             },
         },
 		files: ['**/*.ts', '**/*.tsx'],

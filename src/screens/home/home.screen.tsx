@@ -1,5 +1,6 @@
+import { ImageBackground } from 'expo-image';
 import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 
 import { useStyles } from './home.style';
 
@@ -9,7 +10,8 @@ export function HomeScreen() {
     return (
         <View style={s.container}>
             <StatusBar style="auto" />
-            <Text style={s.text}> =Open up App.tsx to start working on your app! =</Text>
+            {/* eslint-disable-next-line @typescript-eslint/no-require-imports */}
+            <ImageBackground source={require('../../../assets/image/main-background.png')} style={s.backgroundImag} />
         </View>
     );
 }
