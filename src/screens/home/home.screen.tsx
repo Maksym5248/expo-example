@@ -26,6 +26,7 @@ export function HomeScreen() {
         {
             id: 'espn',
             title: t('home.espn'),
+            subTitle: t('home.espnSub'),
             image: require('../../../assets/image/espn.png'),
         },
         {
@@ -62,21 +63,31 @@ export function HomeScreen() {
                 <Svg name="logo" color={theme.colors.logo} style={s.logo} />
                 <Text type="h2" text={t('home.title')} style={s.title} />
                 <Text type="body" text={t('home.subTitle')} color={theme.colors.textSecondary} style={s.subTitle} />
-                {items.map(item => (
-                    <Card key={item.id} style={s.card}>
-                        <Image source={item.image} style={s.cardImage} contentFit="contain" />
-                        <Text text={item.title} />
-                        <Icon
-                            onPress={() => onCheckItem(item.id)}
-                            name={checked.includes(item.id) ? 'check' : 'plus'}
-                            color={theme.colors.textSecondary}
-                            size={24}
-                        />
-                    </Card>
-                ))}
+                {items.map(item => {
+                    const isChecked = checked.includes(item.id);
+
+                    return (
+                        <Card key={item.id} style={s.card}>
+                            <View style={s.cardContent}>
+                                <Image source={item.image} style={s.cardImage} contentFit="contain" />
+                                <View style={s.cardText}>
+                                    <Text text={item.title} />
+                                    {!!item?.subTitle && <Text type="bodyS" text={item?.subTitle} color={theme.colors.textSecondary} />}
+                                </View>
+                            </View>
+                            <Icon
+                                onPress={() => onCheckItem(item.id)}
+                                name={checked.includes(item.id) ? 'check' : 'plus'}
+                                color={isChecked ? theme.colors.primary : theme.colors.textSecondary}
+                                size={16}
+                                style={s.icon}
+                            />
+                        </Card>
+                    );
+                })}
             </Scroll>
             <View style={s.footer}>
-                <Button disabled={!!checked.length} title={t('')} />
+                <Button disabled={!checked.length} title={t('home.submit')} />
             </View>
         </View>
     );

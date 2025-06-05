@@ -26,13 +26,24 @@ export const useStyles = ThemeManager.createStyleSheet(({ theme, device }) => ({
     card: {
         height: 80,
         marginBottom: theme.spacing.S,
+        paddingHorizontal: theme.spacing.XL,
     },
     cardImage: {
         height: 32,
         width: 32,
         borderRadius: theme.radius.S,
     },
+    cardContent: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: theme.spacing.M,
+    },
+    cardText: {
+        flexDirection: 'column',
+    },
     title: {
+        marginTop: theme.spacing.XL,
         marginBottom: theme.spacing.L,
     },
     subTitle: {
@@ -45,5 +56,11 @@ export const useStyles = ThemeManager.createStyleSheet(({ theme, device }) => ({
         right: theme.spacing.L,
         backgroundColor: theme.colors.background,
         height: 88 + device.inset.bottom,
+    },
+    icon: {
+        width: 28,
+        height: 28,
+        backgroundColor: theme.palette.whiteFA10,
+        borderRadius: theme.radius.S,
     },
 }));

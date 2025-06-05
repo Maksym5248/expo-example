@@ -38,6 +38,7 @@ export const themeBase: IBaseThemeSchema = {
     spacing: {
         XS: 10,
         S: 12,
+        M: 16,
         L: 20,
         XL: 24,
         XXL: 26,
