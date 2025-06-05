@@ -4,6 +4,7 @@ export * from './icon';
 export * from './image';
 export * from './input';
 export * from './loading';
+export * from './scroll';
 export * from './svg';
 export * from './text';
 export * from './touchable';

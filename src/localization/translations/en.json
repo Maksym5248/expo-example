@@ -1,0 +1,12 @@
+{
+    "home": {
+        "title": "Select platforms to connect to Stacked",
+        "subTitle": "Connect tools to manage your Leagues. Add at least one now, you can always add more later.",
+        "sleeper": "Sleeper",
+        "espn": "ESPN",
+        "yahoo": "Yahoo",
+        "cbs": "CBS",
+        "unknown": "Unknown",
+        "submit": "Continue"
+    }
+}

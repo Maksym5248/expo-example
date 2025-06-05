@@ -6,10 +6,12 @@ import { type IThemeSchema, type IBaseThemeSchema } from './types';
 
 export const themeBase: IBaseThemeSchema = {
     radius: {
+        S: 3,
         M: 4,
         L: 6,
     },
     colors: {
+        logo: palette.whiteFF,
         primary: palette.green4D,
         text: palette.whiteF6,
         textSecondary: palette.grey95,
@@ -38,6 +40,7 @@ export const themeBase: IBaseThemeSchema = {
         S: 12,
         L: 20,
         XL: 24,
+        XXL: 26,
     },
     fontSize: {
         XS: 12,

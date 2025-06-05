@@ -164,6 +164,7 @@ export default [
             'react-native/no-raw-text': 2,
             'react-native/no-single-element-style-arrays': 2,
             'react/prop-types': 0,
+            '@typescript-eslint/no-require-imports': 0,
             ...prettierConfig.rules,
         },
         ignores: ['eslint.config.js', 'babel.config.js', 'lint-staged.config.js', '.prettierrc.js', 'index.js'],

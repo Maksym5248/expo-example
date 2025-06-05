@@ -6,5 +6,8 @@ export const useStyles = ThemeManager.createStyleSheet(({ theme }) => ({
         borderRadius: theme.radius.L,
         backgroundColor: theme.colors.card,
         padding: 0,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 }));

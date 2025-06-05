@@ -18,6 +18,7 @@ export type IPalette =
     | 'transparent';
 
 export type IColor =
+    | 'logo'
     | 'primary'
     | 'text'
     | 'textSecondary'
@@ -61,11 +62,11 @@ export type IShadow =
 export type ITextStyleType = 'h1' | 'h2' | 'body' | 'bodyXS' | 'bodyS' | 'labelL' | 'labelM' | 'monoS';
 
 export interface IBaseThemeSchema {
-    radius: Record<'M' | 'L', number>;
+    radius: Record<'M' | 'L' | 'S', number>;
     colors: Record<IColor, string>;
     fonts: Record<'heading' | 'regular' | 'mono', string>;
     lineHeight: Record<'XXL' | 'XL' | 'L', number>;
-    spacing: Record<'XL' | 'L' | 'S' | 'XS', number>;
+    spacing: Record<'XXL' | 'XL' | 'L' | 'S' | 'XS', number>;
     fontSize: Record<'XXL' | 'XL' | 'L' | 'M' | 'S' | 'XS', number>;
 }
 
