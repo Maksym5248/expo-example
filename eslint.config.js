@@ -10,9 +10,7 @@ import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import reactNativePlugin from 'eslint-plugin-react-native';
 
-import eslintRecommended from '@eslint/js'; // replaces 'eslint:recommended'
-import importConfigRecommended from 'eslint-plugin-import/config/recommended.js';
-
+import eslintRecommended from '@eslint/js';
 
 import prettierConfig from 'eslint-config-prettier';
 
@@ -33,6 +31,8 @@ export default [
                 browser: true,
                 es2021: true,
                 node: true,
+                NodeJS: true,
+                setTimeout: true,
             },
         },
 		files: ['**/*.ts', '**/*.tsx'],
