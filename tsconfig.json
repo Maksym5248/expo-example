@@ -2,12 +2,13 @@
     "extends": "expo/tsconfig.base",
     "compilerOptions": {
         "strict": true,
-        "rootDir": "src",
+        "rootDir": ".",
         "baseUrl": ".",
         "paths": {
+            "~/assets": ["./assets"],
             "~/*": ["./src/*"]
         }
     },
-    "include": ["src", "src/**/*.tsx"],
+    "include": ["**/*.ts", "**/*.tsx", "*.ts", "*.tsx", "*.js", "./type"],
     "exclude": ["node_modules", "metro.config.js", "babel.config.js", "jest.config.js", "lint-staged.config.js", ".prettierrc.js"]
 }

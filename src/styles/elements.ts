@@ -1,16 +1,15 @@
-import { type IElementStyle } from './types';
+import { type IBaseThemeSchema, type IElementStyle } from './types';
 
-export const createElementsStyles = (): IElementStyle => ({
+export const createElementsStyles = ({ theme }: { theme: IBaseThemeSchema }): IElementStyle => ({
     header: {
         height: 52,
     },
     input: {
-        height: 50,
-    },
-    radio: {
-        height: 30,
+        height: 40,
+        borderRadius: theme.radius.M,
     },
     button: {
-        height: 50,
+        height: 48,
+        borderRadius: theme.radius.M,
     },
 });

@@ -13,7 +13,15 @@ export const themeBase: IBaseThemeSchema = {
         primary: palette.green4D,
         text: palette.whiteF6,
         textSecondary: palette.grey95,
+        textButton: palette.black03,
         background: palette.black03,
+        ripple: palette.black01,
+        disabled: palette.grey62,
+        error: palette.red,
+        transparent: palette.transparent,
+        placeholder: palette.grey95,
+        input: palette.whiteFA15,
+        card: palette.grey14,
     },
     fonts: {
         heading: fonts.TacticSansMed,
@@ -26,6 +34,7 @@ export const themeBase: IBaseThemeSchema = {
         XXL: 32,
     },
     spacing: {
+        XS: 10,
         S: 12,
         L: 20,
         XL: 24,
@@ -44,5 +53,5 @@ export const themePrimary: IThemeSchema = {
     ...themeBase,
     palette,
     text: createTextStyles({ theme: themeBase }),
-    element: createElementsStyles(),
+    element: createElementsStyles({ theme: themeBase }),
 };

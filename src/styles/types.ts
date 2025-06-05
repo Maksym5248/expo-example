@@ -2,6 +2,7 @@ import { type IStyle } from 'react-native-theme-mk';
 
 export type IPalette =
     | 'black03'
+    | 'black01'
     | 'whiteFF'
     | 'whiteFA'
     | 'whiteF6'
@@ -10,9 +11,25 @@ export type IPalette =
     | 'whiteFA15'
     | 'whiteFA60'
     | 'grey95'
-    | 'green4D';
+    | 'grey62'
+    | 'green4D'
+    | 'grey14'
+    | 'red'
+    | 'transparent';
 
-export type IColor = 'primary' | 'text' | 'textSecondary' | 'background';
+export type IColor =
+    | 'primary'
+    | 'text'
+    | 'textSecondary'
+    | 'textButton'
+    | 'background'
+    | 'ripple'
+    | 'disabled'
+    | 'error'
+    | 'transparent'
+    | 'placeholder'
+    | 'card'
+    | 'input';
 
 export interface IThemeTextStyle {
     color: string;
@@ -48,11 +65,12 @@ export interface IBaseThemeSchema {
     colors: Record<IColor, string>;
     fonts: Record<'heading' | 'regular' | 'mono', string>;
     lineHeight: Record<'XXL' | 'XL' | 'L', number>;
-    spacing: Record<'XL' | 'L' | 'S', number>;
+    spacing: Record<'XL' | 'L' | 'S' | 'XS', number>;
     fontSize: Record<'XXL' | 'XL' | 'L' | 'M' | 'S' | 'XS', number>;
 }
+
 export type ITextStyle = Record<ITextStyleType, IThemeTextStyle>;
-export type IElementStyle = Record<'header' | 'input' | 'radio' | 'button', IStyle>;
+export type IElementStyle = Record<'header' | 'input' | 'button', IStyle>;
 export type IPaletteStyle = Record<IPalette, string>;
 export type IShadowStyle = Record<'light' | 'none', IShadow>;
 

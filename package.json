@@ -12,25 +12,29 @@
         "check:eslint": "eslint --fix"
     },
     "dependencies": {
+        "@expo/metro-runtime": "~5.0.4",
         "@react-navigation/native": "^7.1.10",
         "@react-navigation/native-stack": "^7.3.14",
         "expo": "~53.0.10",
+        "expo-image": "~2.2.0",
         "expo-status-bar": "~2.2.3",
+        "lodash": "^4.17.21",
         "react": "19.0.0",
+        "react-dom": "19.0.0",
         "react-native": "0.79.3",
         "react-native-device-info": "^14.0.4",
         "react-native-gesture-handler": "~2.24.0",
         "react-native-reanimated": "~3.17.4",
         "react-native-safe-area-context": "5.4.0",
         "react-native-screens": "~4.11.1",
+        "react-native-svg": "15.11.2",
         "react-native-theme-mk": "^0.2.0",
-        "react-dom": "19.0.0",
-        "react-native-web": "^0.20.0",
-        "@expo/metro-runtime": "~5.0.4"
+        "react-native-web": "^0.20.0"
     },
     "devDependencies": {
         "@babel/core": "^7.25.2",
         "@react-native/eslint-config": "^0.79.3",
+        "@types/lodash": "^4.17.17",
         "@types/react": "~19.0.10",
         "@typescript-eslint/eslint-plugin": "^8.33.1",
         "@typescript-eslint/parser": "^8.33.1",
@@ -46,6 +50,7 @@
         "husky": "4.3.0",
         "lint-staged": "14.0.1",
         "prettier": "^3.5.3",
+        "react-native-svg-transformer": "^1.5.1",
         "tsc-alias": "^1.8.16",
         "typescript": "~5.8.3"
     },
