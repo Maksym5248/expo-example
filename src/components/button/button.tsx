@@ -38,12 +38,12 @@ export const Button = ({
 
     return (
         <View style={[s.container, style, { backgroundColor: colors.background }]} testID={`${testID}.button`}>
-            <Touchable type="rect" disabled={disabled} onPress={onPress} style={styles.touchable} testID={testID} />
             <View>{left}</View>
             {!!isLoading && <Loading size="small" />}
             {!isLoading && !!title && <Text style={s.title} type="labelM" text={title} color={colors.text} />}
             {!isLoading && !!center && center}
             <View>{right}</View>
+            <Touchable type="rect" disabled={disabled} onPress={onPress} style={styles.touchable} testID={testID} />
         </View>
     );
 };

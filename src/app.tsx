@@ -2,8 +2,9 @@ import { useFonts } from 'expo-font';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { enableScreens } from 'react-native-screens';
 
+import { ModalProvider } from './containers';
 import { LocalizationProvider } from './localization';
-import { RootNavigation } from './navigation';
+import { modals, RootNavigation } from './navigation';
 import { ThemeProvider } from './styles';
 
 enableScreens();
@@ -24,6 +25,7 @@ export function App() {
             <LocalizationProvider>
                 <ThemeProvider>
                     <RootNavigation />
+                    <ModalProvider modals={modals} />
                 </ThemeProvider>
             </LocalizationProvider>
         </GestureHandlerRootView>

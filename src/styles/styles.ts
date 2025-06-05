@@ -1,6 +1,6 @@
 import { ThemeManager } from './theme';
 
-export const useStylesCommon = ThemeManager.createStyleSheet(({ theme }) => ({
+export const useStylesCommon = ThemeManager.createStyleSheet(({ theme, device }) => ({
     container: {
         display: 'flex',
         flex: 1,
@@ -20,5 +20,11 @@ export const useStylesCommon = ThemeManager.createStyleSheet(({ theme }) => ({
         top: 0,
         right: 0,
         bottom: 0,
+    },
+    bottomSheet: {
+        height: device.window.height,
+        width: device.window.width,
+        padding: 0,
+        margin: 0,
     },
 }));

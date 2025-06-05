@@ -4,7 +4,9 @@ import { StatusBar } from 'expo-status-bar';
 import { View } from 'react-native';
 
 import { Button, Card, Icon, Image, Scroll, Svg, Text } from '~/components';
+import { MODALS } from '~/constants';
 import { useTranslate } from '~/localization';
+import { Modal } from '~/services';
 import { useTheme } from '~/styles';
 
 import { useStyles } from './home.style';
@@ -55,6 +57,10 @@ export function HomeScreen() {
         });
     };
 
+    const onPressOpenConnection = () => {
+        Modal.show(MODALS.CONNECTION, { id: checked[0] });
+    };
+
     return (
         <View style={s.container}>
             <Image source={backgroundImage} style={s.backgroundImag} contentFit="cover" />
@@ -87,7 +93,7 @@ export function HomeScreen() {
                 })}
             </Scroll>
             <View style={s.footer}>
-                <Button disabled={!checked.length} title={t('home.submit')} />
+                <Button disabled={!checked.length} title={t('home.submit')} onPress={onPressOpenConnection} />
             </View>
         </View>
     );
