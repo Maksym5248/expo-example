@@ -1,8 +1,8 @@
-import check from './check.svg';
-import cross from './cross.svg';
-import email from './email.svg';
-import lock from './lock.svg';
-import logo from './logo.svg';
-import plus from './plus.svg';
+import check from './check';
+import cross from './cross';
+import email from './email';
+import lock from './lock';
+import logo from './logo';
+import plus from './plus';
 
 export const svgs = { logo, check, cross, email, lock, plus };

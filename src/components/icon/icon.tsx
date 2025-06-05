@@ -2,11 +2,11 @@ import React from 'react';
 
 import _ from 'lodash';
 
-import { svgs } from '~/assets';
 import { ThemeManager } from '~/styles';
 
 import { useStyles } from './icon.styles';
 import { type IIconProps } from './icon.types';
+import { svgs } from '../../../assets';
 import { Touchable } from '../touchable';
 
 export const Icon = ({
@@ -36,7 +36,7 @@ export const Icon = ({
 
     return (
         <Touchable style={[s.container, style]} onPress={onPress} disabled={disabled}>
-            <Component {...props} style={[s.svg, ...(_.isArray(svgStyle) ? svgStyle : [svgStyle])]} color={color} />
+            <Component {...props} style={[s.svg, ...(_.isArray(svgStyle) ? svgStyle : [svgStyle])]} fill={color} />
         </Touchable>
     );
 };

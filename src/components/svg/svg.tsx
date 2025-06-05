@@ -2,11 +2,11 @@ import React from 'react';
 
 import _ from 'lodash';
 
-import { svgs } from '~/assets';
 import { ThemeManager } from '~/styles';
 
 import { useStyles } from './svg.styles';
 import { type ISvgProps } from './svg.types';
+import { svgs } from '../../../assets';
 import { Touchable } from '../touchable';
 
 export const Svg = ({
@@ -36,7 +36,7 @@ export const Svg = ({
 
     return (
         <Touchable style={[s.container, style]} onPress={onPress} disabled={disabled}>
-            <Component {...props} style={[s.svg, ...(_.isArray(svgStyle) ? svgStyle : [svgStyle])]} color={color} />
+            <Component {...props} style={[s.svg, ...(_.isArray(svgStyle) ? svgStyle : [svgStyle])]} fill={color} />
         </Touchable>
     );
 };
