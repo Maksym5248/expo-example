@@ -14,7 +14,8 @@ export function HomeScreen() {
     return (
         <View style={s.container}>
             <StatusBar style="light" translucent={false} />
-            <Image source={backgroundImage} style={s.backgroundImag} />
+            <Image source={backgroundImage} style={s.backgroundImag} contentFit="contain" />
+            <View style={s.greenFilter} />
         </View>
     );
 }
