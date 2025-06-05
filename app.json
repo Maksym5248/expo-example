@@ -5,6 +5,7 @@
         "version": "1.0.0",
         "orientation": "portrait",
         "icon": "./assets/image/icon.png",
+        "assetBundlePatterns": ["assets/fonts/*"],
         "userInterfaceStyle": "light",
         "newArchEnabled": true,
         "splash": {
@@ -24,6 +25,7 @@
         },
         "web": {
             "favicon": "./assets/image/favicon.png"
-        }
+        },
+        "plugins": ["expo-font"]
     }
 }

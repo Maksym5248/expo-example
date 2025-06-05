@@ -1,5 +1,5 @@
 export const fonts = {
-    TacticSansMed: 'TacticSans-Med',
-    VolksansTest: 'volksans Test',
-    VolksansMonoTest: 'volksans Mono Test',
+    TacticSansMed: 'Tactic Sans Medium',
+    VolksansTest: 'volksans Test Regular',
+    VolksansMonoTest: 'volksans Test Bold',
 };
