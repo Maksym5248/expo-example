@@ -64,13 +64,13 @@ export type IShadow =
       }
     | undefined;
 
-export type ITextStyleType = 'h1' | 'h2' | 'body' | 'bodyXS' | 'bodyS' | 'labelL' | 'labelM' | 'monoS';
+export type ITextStyleType = 'h1' | 'h2' | 'body' | 'bodyXS' | 'bodyS' | 'labelL' | 'labelM' | 'monoS' | 'monoXS';
 
 export interface IBaseThemeSchema {
     radius: Record<'M' | 'L' | 'S', number>;
     colors: Record<IColor, string>;
     fonts: Record<'heading' | 'regular' | 'mono', string>;
-    lineHeight: Record<'XXXL' | 'XXL' | 'XL' | 'L', number>;
+    lineHeight: Record<'XXXL' | 'XXL' | 'XL' | 'L' | 'M', number>;
     spacing: Record<'XXL' | 'XL' | 'L' | 'M' | 'S' | 'XS' | 'XXS', number>;
     fontSize: Record<'XXL' | 'XL' | 'L' | 'M' | 'S' | 'XS', number>;
 }

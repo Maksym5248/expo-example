@@ -45,8 +45,14 @@ export const createTextStyles = ({ theme }: { theme: IBaseThemeSchema }): ITextS
     },
     monoS: {
         color: theme.colors.text,
-        fontFamily: theme.fonts.regular,
+        fontFamily: theme.fonts.mono,
         fontSize: theme.fontSize.S,
         lineHeight: theme.lineHeight.L,
+    },
+    monoXS: {
+        color: theme.colors.text,
+        fontFamily: theme.fonts.mono,
+        fontSize: theme.fontSize.XS,
+        lineHeight: theme.lineHeight.M,
     },
 });

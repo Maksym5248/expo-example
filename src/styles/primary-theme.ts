@@ -33,6 +33,7 @@ export const themeBase: IBaseThemeSchema = {
         mono: fonts.VolksansMonoTest,
     },
     lineHeight: {
+        M: 18,
         L: 20,
         XL: 24,
         XXL: 32,
