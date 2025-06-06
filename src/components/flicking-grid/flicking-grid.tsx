@@ -11,11 +11,9 @@ const Square = ({ index, squareSize, gridGap, color, maxOpacity, flickerChance, 
     const startFlickerAnimation = () => {
         if (Math.random() < flickerChance) {
             sharedOpacity.value = withTiming(Math.random() * maxOpacity, { duration: duration }, () => {
-                // Run the next animation cycle using a callback
                 runOnJS(startFlickerAnimation)();
             });
         } else {
-            // If flickerChance fails, wait and retry
             setTimeout(() => {
                 runOnJS(startFlickerAnimation)();
             }, duration);
@@ -26,7 +24,7 @@ const Square = ({ index, squareSize, gridGap, color, maxOpacity, flickerChance, 
         startFlickerAnimation();
 
         return () => {
-            cancelAnimation(sharedOpacity); // Cancel ongoing animation
+            cancelAnimation(sharedOpacity);
         };
     }, [sharedOpacity, flickerChance, maxOpacity]);
 
