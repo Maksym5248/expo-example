@@ -1,13 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { StatusBar } from 'expo-status-bar';
 import { View } from 'react-native';
 
 import { MODALS } from '~/constants';
 import { Button, Card, Icon, Image, Scroll, Svg, Text } from '~/core';
+import { items } from '~/data';
 import { useTranslate } from '~/localization';
 import { Modal } from '~/services';
-import { items } from '~/store';
 import { useStylesCommon, useTheme } from '~/styles';
 
 import { useStyles } from './home.style';
@@ -19,13 +19,27 @@ export function HomeScreen() {
     const s = useStyles();
     const theme = useTheme();
     const t = useTranslate();
-    const [checked] = useState<string[]>([]);
+    const [checked, setChecked] = useState<string[]>([]);
 
     const onCheckItem = (itemId: string) => {
         Modal.show(MODALS.CONNECT_EMAIL, {
             id: itemId,
+            onCreated: () => {
+                setChecked(prev => {
+                    if (prev.includes(itemId)) {
+                        return prev.filter(id => id !== itemId);
+                    }
+                    return [...prev, itemId];
+                });
+            },
         });
     };
+
+    useEffect(() => {
+        Modal.show(MODALS.CONNECT_DOWNLOADING, {
+            id: items[0].id,
+        });
+    }, []);
 
     return (
         <View style={s.container}>

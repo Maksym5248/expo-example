@@ -5,6 +5,7 @@ export const useStyles = ThemeManager.createStyleSheet(({ theme }) => ({
         height: 80,
         marginBottom: theme.spacing.S,
         paddingHorizontal: theme.spacing.XL,
+        marginHorizontal: theme.spacing.L,
     },
     cardImage: {
         height: 32,
@@ -32,5 +33,10 @@ export const useStyles = ThemeManager.createStyleSheet(({ theme }) => ({
         height: 28,
         backgroundColor: theme.palette.whiteFA10,
         borderRadius: theme.radius.S,
+    },
+    loading: {
+        flex: 0,
+        width: 28,
+        height: 28,
     },
 }));

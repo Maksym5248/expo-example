@@ -39,6 +39,9 @@
         },
         "codeForm": {
             "description": "Enter a 6-digit code sent to %{email}"
+        },
+        "downloading": {
+            "description": "We’ll redirect you once done."
         }
     }
 }

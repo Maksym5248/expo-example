@@ -6,10 +6,10 @@ import Animated from 'react-native-reanimated';
 import { BottomSheetConnect } from '~/components';
 import { MODALS } from '~/constants';
 import { Button, type IBottomSheetRef, Icon, Scroll, TextInput } from '~/core';
+import { items } from '~/data';
 import { useFocusInput, useForm, useKeyboardStyle } from '~/hooks';
 import { useTranslate } from '~/localization';
 import { Modal } from '~/services';
-import { items } from '~/store';
 import { useStylesCommon, useTheme } from '~/styles';
 import { validation } from '~/utils';
 
@@ -21,7 +21,7 @@ const validationSchema = validation.shape({
     password: validation.password(),
 });
 
-export const ConnectEmailModal = memo(({ id, ...props }: IConnectEmailModalProps) => {
+export const ConnectEmailModal = memo(({ id, onCreated, ...props }: IConnectEmailModalProps) => {
     const styles = useStylesCommon();
     const theme = useTheme();
     const s = useStyles();
@@ -29,8 +29,12 @@ export const ConnectEmailModal = memo(({ id, ...props }: IConnectEmailModalProps
     const item = useMemo(() => items.find(el => el.id === id), [id]);
     const refBootomSheet = useRef<IBottomSheetRef>(null);
 
-    const onSubmit = useCallback((params: { email: string }) => {
-        Modal.show(MODALS.CONNECT_CODE, params);
+    const onSubmit = useCallback(({ email }: { email: string }) => {
+        Modal.show(MODALS.CONNECT_CODE, {
+            id,
+            email,
+            onCreated,
+        });
 
         setTimeout(() => {
             refBootomSheet.current?.close();

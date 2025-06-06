@@ -33,7 +33,7 @@ export const BottomSheetConnect = forwardRef<IBottomSheetRef, IBottomSheetConnec
                         left: (
                             <View style={s.titleContainer}>
                                 <Image source={image} style={s.cardImage} />
-                                <Text text={title} />
+                                <Text type="labelL" text={title} />
                             </View>
                         ),
                         right: <Icon name="cross" color={theme.colors.textSecondary} onPress={onClose} />,

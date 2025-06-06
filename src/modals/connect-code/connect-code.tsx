@@ -6,10 +6,10 @@ import { CodeField, useBlurOnFulfill, useClearByFocusCell, Cursor, type RenderCe
 import { BottomSheetConnect } from '~/components';
 import { MODALS } from '~/constants';
 import { Scroll, Text, type IBottomSheetRef } from '~/core';
+import { store } from '~/data';
 import { useForm } from '~/hooks';
 import { useTranslate } from '~/localization';
 import { Modal } from '~/services';
-import { store } from '~/store';
 import { useTheme } from '~/styles';
 import { validation } from '~/utils';
 
@@ -22,7 +22,7 @@ const validationSchema = validation.shape({
 
 const CELL_COUNT = 6;
 
-export const ConnectCodeModal = memo(({ id, email, ...props }: IConnectCodeModalProps) => {
+export const ConnectCodeModal = memo(({ id, onCreated, email, ...props }: IConnectCodeModalProps) => {
     const theme = useTheme();
     const s = useStyles();
     const t = useTranslate();
@@ -31,7 +31,10 @@ export const ConnectCodeModal = memo(({ id, email, ...props }: IConnectCodeModal
     const refBootomSheet = useRef<IBottomSheetRef>(null);
 
     const onSubmit = useCallback(() => {
-        Modal.show(MODALS.CONNECT_DOWNLOADING);
+        Modal.show(MODALS.CONNECT_DOWNLOADING, {
+            id,
+            onCreated,
+        });
 
         setTimeout(() => {
             refBootomSheet.current?.close();

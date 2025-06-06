@@ -4,12 +4,12 @@ export const items: IItem[] = [
     {
         id: 'connecting',
         title: 'Connecting to platform',
-        status: 'loading',
+        status: 'success',
     },
     {
         id: 'slates',
         title: 'Finding Active Slates',
-        status: 'idle',
+        status: 'loading',
     },
     {
         id: 'slates',
