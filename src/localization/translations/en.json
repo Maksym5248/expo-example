@@ -29,6 +29,7 @@
     },
     "connecting": {
         "title": "Connecting",
+        "titleDownloading": "Downloading data",
         "email": "Email address",
         "password": "Email address",
         "emailFrom": {

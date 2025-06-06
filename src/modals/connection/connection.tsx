@@ -10,6 +10,7 @@ import { useStylesCommon, useTheme } from '~/styles';
 import { useStyles } from './connection.style';
 import { type IConnectionModalProps } from './connection.type';
 import { EmailForm, CodeForm } from './containers';
+import { Downloading } from './containers/downloading';
 
 enum STEPS {
     EMAIL = 'email',
@@ -19,11 +20,13 @@ enum STEPS {
 
 interface IStep {
     id: STEPS;
+    title: string;
     email?: string;
 }
 
-const createStep = (id: STEPS, email?: string): IStep => ({
+const createStep = (id: STEPS, title: string, email?: string): IStep => ({
     id,
+    title,
     email,
 });
 
@@ -32,17 +35,18 @@ export const ConnectionModal = memo(({ id, ...props }: IConnectionModalProps) =>
     const theme = useTheme();
     const s = useStyles();
     const t = useTranslate();
-    const [step, setStep] = useState<IStep>(createStep(STEPS.CODE, 'email@address.com'));
-
-    const refBootomSheet = useRef<IBottomSheetRef>(null);
     const item = useMemo(() => items.find(el => el.id === id), [id]);
 
+    const [step, setStep] = useState<IStep>(createStep(STEPS.CODE, `${t('connecting.title')} ${t(item?.title)}`, 'email@address.com'));
+
+    const refBootomSheet = useRef<IBottomSheetRef>(null);
+
     const onSelectedEmail = useCallback(({ email }: { email: string }) => {
-        setStep(createStep(STEPS.CODE, email));
+        setStep(createStep(STEPS.CODE, `${t('connecting.title')} ${t(item?.title)}`, email));
     }, []);
 
     const onSelectedCode = useCallback(() => {
-        setStep(createStep(STEPS.DOWNLOADING));
+        setStep(createStep(STEPS.DOWNLOADING, t('connecting.titleDownloading')));
     }, []);
 
     const onClose = useCallback(() => {
@@ -61,13 +65,14 @@ export const ConnectionModal = memo(({ id, ...props }: IConnectionModalProps) =>
                     left: (
                         <View style={s.titleContainer}>
                             <Image source={item?.image} style={s.cardImage} />
-                            <Text text={`${t('connecting.title')} ${t(item?.title) ?? t('items.unknown')}`} />
+                            <Text text={step.title} />
                         </View>
                     ),
                     right: <Icon name="cross" color={theme.colors.textSecondary} onPress={onClose} />,
                 }}>
                 {step.id === STEPS.EMAIL && <EmailForm onSelected={onSelectedEmail} />}
                 {step.id === STEPS.CODE && <CodeForm onSelected={onSelectedCode} email={step.email as string} />}
+                {step.id === STEPS.DOWNLOADING && <Downloading />}
             </BottomSheet>
         </Modal>
     );
