@@ -25,7 +25,7 @@ export const CardDownloading = memo(({ item }: ICardDownloadingProps) => {
                     {isLoading && (
                         <TextGradient
                             colors={[theme.palette.whiteFA60, theme.palette.whiteFA, theme.palette.whiteFA60]}
-                            height={theme.lineHeight.XL}
+                            locations={[0, 0.05, 1]}
                             text={item.title}
                             color={isSuccess ? theme.colors.primary : theme.colors.textSecondary}
                         />
