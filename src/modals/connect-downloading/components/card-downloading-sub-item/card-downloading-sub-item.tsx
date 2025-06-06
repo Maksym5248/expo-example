@@ -24,7 +24,6 @@ export const CardDownloadingSubItem = memo(({ item }: ICardDownloadingSubItemPro
                     locations={[0, 0.05, 1]}
                     text={item.title}
                     loading
-                    duration={1000}
                 />
             )}
             {!!isSuccess && <Icon name="check" color={theme.colors.primary} size={12} />}

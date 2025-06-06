@@ -7,4 +7,5 @@ export interface IGradientTextProps extends ITextProps {
     locations?: [number, number, ...number[]];
     loading?: boolean;
     duration?: number;
+    delay?: number;
 }
