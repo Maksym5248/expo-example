@@ -45,6 +45,10 @@ export const ConnectionModal = memo(({ id, ...props }: IConnectionModalProps) =>
         setStep(createStep(STEPS.DOWNLOADING));
     }, []);
 
+    const onClose = useCallback(() => {
+        refBootomSheet.current?.close();
+    }, []);
+
     return (
         <Modal style={styles.bottomSheet} {...props} animationInTiming={1}>
             <BottomSheet
@@ -60,7 +64,7 @@ export const ConnectionModal = memo(({ id, ...props }: IConnectionModalProps) =>
                             <Text text={`${t('connecting.title')} ${t(item?.title) ?? t('items.unknown')}`} />
                         </View>
                     ),
-                    right: <Icon name="cross" color={theme.colors.textSecondary} onPress={props.hide} />,
+                    right: <Icon name="cross" color={theme.colors.textSecondary} onPress={onClose} />,
                 }}>
                 {step.id === STEPS.EMAIL && <EmailForm onSelected={onSelectedEmail} />}
                 {step.id === STEPS.CODE && <CodeForm onSelected={onSelectedCode} email={step.email as string} />}
