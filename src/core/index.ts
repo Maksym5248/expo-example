@@ -1,6 +1,7 @@
 export * from './bottom-sheet';
 export * from './button';
 export * from './card';
+export * from './flicking-grid';
 export * from './icon';
 export * from './image';
 export * from './input';
@@ -9,4 +10,5 @@ export * from './loading';
 export * from './scroll';
 export * from './svg';
 export * from './text';
+export * from './text-gradient';
 export * from './touchable';

@@ -3,8 +3,7 @@ import React, { memo } from 'react';
 import { isString } from 'lodash';
 import { View } from 'react-native';
 
-import { FlickeringGrid } from '~/components';
-import { Text, Card, Icon, Loading } from '~/core';
+import { FlickeringGrid, Text, Card, Icon, Loading, TextGradient } from '~/core';
 import { useTheme } from '~/styles';
 
 import { useStyles } from './card-downloading.style';
@@ -22,7 +21,15 @@ export const CardDownloading = memo(({ item }: ICardDownloadingProps) => {
             {!!isLoading && <FlickeringGrid style={s.flickeringGrid} />}
             <View style={s.cardContent}>
                 <View style={s.cardText}>
-                    <Text text={item.title} color={isSuccess ? theme.colors.primary : theme.colors.textSecondary} />
+                    {!isLoading && <Text text={item.title} color={isSuccess ? theme.colors.primary : theme.colors.textSecondary} />}
+                    {isLoading && (
+                        <TextGradient
+                            colors={[theme.palette.whiteFA60, theme.palette.whiteFA, theme.palette.whiteFA60]}
+                            height={theme.lineHeight.XL}
+                            text={item.title}
+                            color={isSuccess ? theme.colors.primary : theme.colors.textSecondary}
+                        />
+                    )}
                     {!!isString(item.response) && <Text type="bodyS" text={item.response} color={theme.colors.textSecondary} />}
                 </View>
             </View>
