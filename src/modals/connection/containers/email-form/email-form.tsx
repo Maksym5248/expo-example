@@ -17,7 +17,7 @@ const validationSchema = validation.shape({
     password: validation.password(),
 });
 
-export const EmailFrom = memo(({ onSelected }: IEmailFromProps) => {
+export const EmailForm = memo(({ onSelected }: IEmailFromProps) => {
     const styles = useStylesCommon();
     const theme = useTheme();
     const s = useStyles();
@@ -32,11 +32,11 @@ export const EmailFrom = memo(({ onSelected }: IEmailFromProps) => {
             password: '',
         },
         validationSchema,
-        onSubmit: () => onSelected(),
+        onSubmit: onSelected,
     });
 
     return (
-        <Scroll bounces={false} showsVerticalScrollIndicator={false} style={s.scroll} contentContainerStyle={s.scroll}>
+        <Scroll bounces={false} showsVerticalScrollIndicator={false}>
             <View style={s.container}>
                 <TextInput
                     {...fields.email}
@@ -68,4 +68,4 @@ export const EmailFrom = memo(({ onSelected }: IEmailFromProps) => {
     );
 });
 
-EmailFrom.displayName = 'EmailFrom';
+EmailForm.displayName = 'EmailForm';

@@ -9,26 +9,40 @@ import { useStylesCommon, useTheme } from '~/styles';
 
 import { useStyles } from './connection.style';
 import { type IConnectionModalProps } from './connection.type';
-import { EmailFrom } from './containers';
+import { EmailForm, CodeForm } from './containers';
 
 enum STEPS {
     EMAIL = 'email',
-    PHONE = 'phone',
+    CODE = 'code',
     DOWNLOADING = 'downloading',
 }
+
+interface IStep {
+    id: STEPS;
+    email?: string;
+}
+
+const createStep = (id: STEPS, email?: string): IStep => ({
+    id,
+    email,
+});
 
 export const ConnectionModal = memo(({ id, ...props }: IConnectionModalProps) => {
     const styles = useStylesCommon();
     const theme = useTheme();
     const s = useStyles();
     const t = useTranslate();
-    const [step, setStep] = useState<STEPS>(STEPS.EMAIL);
+    const [step, setStep] = useState<IStep>(createStep(STEPS.CODE, 'email@address.com'));
 
     const refBootomSheet = useRef<IBottomSheetRef>(null);
     const item = useMemo(() => items.find(el => el.id === id), [id]);
 
-    const onSelectedEmail = useCallback(() => {
-        setStep(STEPS.PHONE);
+    const onSelectedEmail = useCallback(({ email }: { email: string }) => {
+        setStep(createStep(STEPS.CODE, email));
+    }, []);
+
+    const onSelectedCode = useCallback(() => {
+        setStep(createStep(STEPS.DOWNLOADING));
     }, []);
 
     return (
@@ -48,7 +62,8 @@ export const ConnectionModal = memo(({ id, ...props }: IConnectionModalProps) =>
                     ),
                     right: <Icon name="cross" color={theme.colors.textSecondary} onPress={props.hide} />,
                 }}>
-                {step === STEPS.EMAIL && <EmailFrom onSelected={onSelectedEmail} />}
+                {step.id === STEPS.EMAIL && <EmailForm onSelected={onSelectedEmail} />}
+                {step.id === STEPS.CODE && <CodeForm onSelected={onSelectedCode} email={step.email as string} />}
             </BottomSheet>
         </Modal>
     );

@@ -35,6 +35,9 @@
             "email": "Email address",
             "password": "Password",
             "submit": "Continue"
+        },
+        "codeForm": {
+            "description": "Enter a 6-digit code sent to %{email}"
         }
     }
 }

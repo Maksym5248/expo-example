@@ -1,5 +1,5 @@
 export interface IEmailFromProps {
-    onSelected: () => void;
+    onSelected: ({ email }: { email: string }) => void;
 }
 
 export interface IEmailFrom {

@@ -67,7 +67,7 @@ export interface IBaseThemeSchema {
     radius: Record<'M' | 'L' | 'S', number>;
     colors: Record<IColor, string>;
     fonts: Record<'heading' | 'regular' | 'mono', string>;
-    lineHeight: Record<'XXL' | 'XL' | 'L', number>;
+    lineHeight: Record<'XXXL' | 'XXL' | 'XL' | 'L', number>;
     spacing: Record<'XXL' | 'XL' | 'L' | 'M' | 'S' | 'XS' | 'XXS', number>;
     fontSize: Record<'XXL' | 'XL' | 'L' | 'M' | 'S' | 'XS', number>;
 }

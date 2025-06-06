@@ -5,7 +5,7 @@ export const createTextStyles = ({ theme }: { theme: IBaseThemeSchema }): ITextS
         color: theme.colors.text,
         fontFamily: theme.fonts.mono,
         fontSize: theme.fontSize.XXL,
-        lineHeight: theme.lineHeight.XL,
+        lineHeight: theme.lineHeight.XXXL,
     },
     h2: {
         color: theme.colors.text,
