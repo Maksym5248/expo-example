@@ -49,14 +49,6 @@ export const useStyles = ThemeManager.createStyleSheet(({ theme, device }) => ({
     subTitle: {
         marginBottom: theme.spacing.XL,
     },
-    footer: {
-        position: 'absolute',
-        bottom: 0,
-        left: theme.spacing.L,
-        right: theme.spacing.L,
-        backgroundColor: theme.colors.background,
-        height: 88 + device.inset.bottom,
-    },
     icon: {
         width: 28,
         height: 28,

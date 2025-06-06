@@ -24,7 +24,6 @@ export const useStyles = ThemeManager.createStyleSheet(({ theme }) => ({
         width: '100%',
         justifyContent: 'space-between',
         alignItems: 'center',
-        paddingHorizontal: 20,
         flexDirection: 'row',
     },
     headerCenter: {

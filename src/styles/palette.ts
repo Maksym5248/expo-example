@@ -14,6 +14,7 @@ export const palette: Record<IPalette, string> = {
     grey62: '#666662',
     grey14: '#141414',
     green4D: '#B5FF4D',
+    green26: '#262626',
     red: 'red',
     transparent: 'rgba(250, 250, 250, 0)',
 };

@@ -7,58 +7,32 @@ import { Button, Card, Icon, Image, Scroll, Svg, Text } from '~/components';
 import { MODALS } from '~/constants';
 import { useTranslate } from '~/localization';
 import { Modal } from '~/services';
-import { useTheme } from '~/styles';
+import { items } from '~/store';
+import { useStylesCommon, useTheme } from '~/styles';
 
 import { useStyles } from './home.style';
 
 const backgroundImage = require('../../../assets/image/main-background.png');
 
 export function HomeScreen() {
+    const styles = useStylesCommon();
     const s = useStyles();
     const theme = useTheme();
     const t = useTranslate();
     const [checked, setChecked] = useState<string[]>([]);
 
-    const items = [
-        {
-            id: 'sleeper',
-            title: t('home.sleeper'),
-            image: require('../../../assets/image/sleeper.png'),
-        },
-        {
-            id: 'espn',
-            title: t('home.espn'),
-            subTitle: t('home.espnSub'),
-            image: require('../../../assets/image/espn.png'),
-        },
-        {
-            id: 'yahoo',
-            title: t('home.yahoo'),
-            image: require('../../../assets/image/yahoo.png'),
-        },
-        {
-            id: 'cbs',
-            title: t('home.cbs'),
-            image: require('../../../assets/image/cbs.png'),
-        },
-        {
-            id: 'unknown',
-            title: t('home.unknown'),
-            image: require('../../../assets/image/unknown.png'),
-        },
-    ];
-
     const onCheckItem = (itemId: string) => {
-        setChecked(prev => {
-            if (prev.includes(itemId)) {
-                return prev.filter(id => id !== itemId);
-            }
-            return [...prev, itemId];
+        Modal.show(MODALS.CONNECTION, {
+            id: itemId,
+            onCreated: () => {
+                setChecked(prev => {
+                    if (prev.includes(itemId)) {
+                        return prev.filter(id => id !== itemId);
+                    }
+                    return [...prev, itemId];
+                });
+            },
         });
-    };
-
-    const onPressOpenConnection = () => {
-        Modal.show(MODALS.CONNECTION, { id: checked[0] });
     };
 
     return (
@@ -77,8 +51,8 @@ export function HomeScreen() {
                             <View style={s.cardContent}>
                                 <Image source={item.image} style={s.cardImage} contentFit="contain" />
                                 <View style={s.cardText}>
-                                    <Text text={item.title} />
-                                    {!!item?.subTitle && <Text type="bodyS" text={item?.subTitle} color={theme.colors.textSecondary} />}
+                                    <Text text={t(item.title)} />
+                                    {!!item?.subTitle && <Text type="bodyS" text={t(item?.subTitle)} color={theme.colors.textSecondary} />}
                                 </View>
                             </View>
                             <Icon
@@ -92,8 +66,8 @@ export function HomeScreen() {
                     );
                 })}
             </Scroll>
-            <View style={s.footer}>
-                <Button disabled={!checked.length} title={t('home.submit')} onPress={onPressOpenConnection} />
+            <View style={styles.footer}>
+                <Button disabled={!checked.length} title={t('home.submit')} />
             </View>
         </View>
     );

@@ -26,5 +26,16 @@ export const useStylesCommon = ThemeManager.createStyleSheet(({ theme, device })
         width: device.window.width,
         padding: 0,
         margin: 0,
+        borderTopLeftRadius: 16,
+        borderTopRightRadius: 16,
+    },
+    footer: {
+        borderTopWidth: 1,
+        borderTopColor: theme.colors.border,
+        backgroundColor: theme.colors.background,
+        height: 88 + device.inset.bottom,
+        paddingBottom: device.inset.bottom,
+        paddingHorizontal: theme.spacing.L,
+        justifyContent: 'center',
     },
 }));

@@ -1,9 +1,6 @@
 import { ThemeManager } from '~/styles';
 
 export const useStyles = ThemeManager.createStyleSheet(({ theme }) => ({
-    container: {
-        height: theme.element.input.height,
-    },
     inputContainer: {
         ...theme.element.input,
         flexDirection: 'row',
@@ -13,11 +10,14 @@ export const useStyles = ThemeManager.createStyleSheet(({ theme }) => ({
         paddingLeft: theme.spacing.XS,
         backgroundColor: theme.colors.input,
         borderRadius: theme.radius.M,
+        gap: theme.spacing.XXS,
     },
     input: {
         ...theme.element.input,
         width: '100%',
         ...theme.text.body,
+        lineHeight: 20,
+        verticalAlign: 'center',
         color: theme.colors.textSecondary,
         paddingTop: 0,
         paddingLeft: 0,

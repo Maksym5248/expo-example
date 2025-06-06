@@ -2,7 +2,7 @@ import React, { forwardRef, type ForwardedRef, useCallback, useRef } from 'react
 
 import { isString } from 'lodash';
 import { View, TextInput as RNTextInput, Text as RNText } from 'react-native';
-import { useSharedValue } from 'react-native-reanimated';
+import Animated, { Layout, useSharedValue } from 'react-native-reanimated';
 
 import { useTheme } from '~/styles';
 import { toMaskPattern } from '~/utils';
@@ -88,8 +88,13 @@ const Component = (
         }
     };
 
+    const errorMessageHeight = 20;
+    const containerHeightBase = (theme.element.input.height as number) ?? 50;
+
+    const containerHeight = isValid ? containerHeightBase : containerHeightBase + errorMessageHeight;
+
     return (
-        <View style={[s.container, style]} pointerEvents={pointerEvents}>
+        <Animated.View style={[style, { height: containerHeight }]} layout={Layout.duration(300)} pointerEvents={pointerEvents}>
             <View style={[s.inputContainer, getBorderStyle(theme, !!isValid, isFocused), contentStyle]}>
                 <View onLayout={onLayoutLeftIcon}>{renderLeftIcon()}</View>
                 {!!disabled && <RNText style={[s.input, s.inputText, inputStyle]}>{value}</RNText>}
@@ -125,7 +130,7 @@ const Component = (
                 />
             )}
             {!!message && !isString(message) && message}
-        </View>
+        </Animated.View>
     );
 };
 

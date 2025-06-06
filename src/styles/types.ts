@@ -14,6 +14,7 @@ export type IPalette =
     | 'grey62'
     | 'green4D'
     | 'grey14'
+    | 'green26'
     | 'red'
     | 'transparent';
 
@@ -30,6 +31,7 @@ export type IColor =
     | 'transparent'
     | 'placeholder'
     | 'card'
+    | 'border'
     | 'input';
 
 export interface IThemeTextStyle {
@@ -66,7 +68,7 @@ export interface IBaseThemeSchema {
     colors: Record<IColor, string>;
     fonts: Record<'heading' | 'regular' | 'mono', string>;
     lineHeight: Record<'XXL' | 'XL' | 'L', number>;
-    spacing: Record<'XXL' | 'XL' | 'L' | 'M' | 'S' | 'XS', number>;
+    spacing: Record<'XXL' | 'XL' | 'L' | 'M' | 'S' | 'XS' | 'XXS', number>;
     fontSize: Record<'XXL' | 'XL' | 'L' | 'M' | 'S' | 'XS', number>;
 }
 

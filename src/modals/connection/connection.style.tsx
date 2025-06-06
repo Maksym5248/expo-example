@@ -1,11 +1,23 @@
 import { ThemeManager } from '~/styles';
 
-export const getHeight = (device: { window: { height: number } }) => device.window.height * 0.9;
-
 export const useStyles = ThemeManager.createStyleSheet(({ theme, device }) => ({
     container: {
-        height: getHeight(device),
+        height: device.window.height - 100,
         width: device.window.width,
-        paddingBottom: device.inset.bottom + Number(theme.element.button.height) + theme.spacing.L,
+        backgroundColor: theme.colors.background,
+    },
+    header: {
+        paddingHorizontal: theme.spacing.L,
+        height: 60,
+    },
+    titleContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: theme.spacing.S,
+    },
+    cardImage: {
+        width: 20,
+        height: 20,
+        borderRadius: 2.5,
     },
 }));

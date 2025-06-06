@@ -9,6 +9,7 @@ export interface IBottomSheetProps {
     enabledSwipe?: boolean;
     enableHideOnPressBackground?: boolean;
     contentStyle?: IViewStyle;
+    headerStyles?: IViewStyle;
     header?: {
         left?: ReactNode;
         center?: ReactNode;

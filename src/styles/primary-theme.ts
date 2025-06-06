@@ -24,6 +24,7 @@ export const themeBase: IBaseThemeSchema = {
         placeholder: palette.grey95,
         input: palette.whiteFA15,
         card: palette.grey14,
+        border: palette.green26,
     },
     fonts: {
         heading: fonts.TacticSansMed,
@@ -36,6 +37,7 @@ export const themeBase: IBaseThemeSchema = {
         XXL: 32,
     },
     spacing: {
+        XXS: 8,
         XS: 10,
         S: 12,
         M: 16,
