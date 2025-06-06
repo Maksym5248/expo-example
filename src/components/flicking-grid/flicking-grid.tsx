@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import Animated, { useSharedValue, useAnimatedStyle, withTiming, runOnJS } from 'react-native-reanimated';
+import Animated, { useSharedValue, useAnimatedStyle, withTiming, runOnJS, cancelAnimation } from 'react-native-reanimated';
 
 import { FLICKERING_COLOR, useStyles } from './flicking-grid.style';
 import { type IFlickingGridProps, type ISquare } from './flicking-grid.type';
@@ -24,6 +24,10 @@ const Square = ({ index, squareSize, gridGap, color, maxOpacity, flickerChance, 
 
     useEffect(() => {
         startFlickerAnimation();
+
+        return () => {
+            cancelAnimation(sharedOpacity); // Cancel ongoing animation
+        };
     }, [sharedOpacity, flickerChance, maxOpacity]);
 
     const animatedStyle = useAnimatedStyle(() => ({
