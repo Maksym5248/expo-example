@@ -42,7 +42,7 @@ export const BottomSheet = forwardRef<IBottomSheetRef, IBottomSheetProps>(
     ) => {
         const s = useStyles();
         const device = useDevice();
-        const MAX_HEIGHT = device.window.height - 100;
+        const MAX_HEIGHT = device.window.height - 50;
 
         const t = useTranslate('core.bottom-sheet');
 

@@ -2,7 +2,7 @@ import { ThemeManager } from '~/styles';
 
 export const useStyles = ThemeManager.createStyleSheet(({ theme, device }) => ({
     container: {
-        height: device.window.height - 100,
+        height: device.window.height - 50,
         width: device.window.width,
         backgroundColor: theme.colors.background,
     },

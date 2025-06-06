@@ -26,6 +26,18 @@
         "web": {
             "favicon": "./assets/image/favicon.png"
         },
-        "plugins": ["expo-font"]
+        "plugins": ["expo-font"],
+        "extra": {
+            "eas": {
+                "projectId": "0a3cea33-6b8f-4225-88b0-2c57c9f812c6"
+            }
+        },
+        "owner": "max-kost",
+        "runtimeVersion": {
+            "policy": "appVersion"
+        },
+        "updates": {
+            "url": "https://u.expo.dev/0a3cea33-6b8f-4225-88b0-2c57c9f812c6"
+        }
     }
 }

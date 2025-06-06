@@ -4,7 +4,7 @@ const HEADER_HEIGHT = 60;
 
 export const useStyles = ThemeManager.createStyleSheet(({ theme, device }) => ({
     container: {
-        height: device.window.height - 100 - HEADER_HEIGHT,
+        height: device.window.height - 50 - HEADER_HEIGHT,
         justifyContent: 'flex-start',
     },
     content: {
