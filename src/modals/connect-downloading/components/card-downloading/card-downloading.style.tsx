@@ -6,11 +6,14 @@ export const useStyles = ThemeManager.createStyleSheet(({ theme }) => ({
         marginBottom: theme.spacing.S,
         paddingHorizontal: theme.spacing.XL,
         marginHorizontal: theme.spacing.L,
+        position: 'relative',
     },
-    cardImage: {
-        height: 32,
-        width: 32,
-        borderRadius: theme.radius.S,
+    flickeringGrid: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
     },
     cardContent: {
         flex: 1,

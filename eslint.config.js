@@ -33,6 +33,8 @@ export default [
                 node: true,
                 NodeJS: true,
                 setTimeout: true,
+                setInterval: true,
+                clearInterval: true,
                 require: true,
             },
         },

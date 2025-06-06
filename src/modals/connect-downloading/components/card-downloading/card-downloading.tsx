@@ -3,6 +3,7 @@ import React, { memo } from 'react';
 import { isString } from 'lodash';
 import { View } from 'react-native';
 
+import { FlickeringGrid } from '~/components';
 import { Text, Card, Icon, Loading } from '~/core';
 import { useTheme } from '~/styles';
 
@@ -18,6 +19,7 @@ export const CardDownloading = memo(({ item }: ICardDownloadingProps) => {
 
     return (
         <Card key={item.id} style={s.card}>
+            {!!isLoading && <FlickeringGrid style={s.flickeringGrid} />}
             <View style={s.cardContent}>
                 <View style={s.cardText}>
                     <Text text={item.title} color={isSuccess ? theme.colors.primary : theme.colors.textSecondary} />
