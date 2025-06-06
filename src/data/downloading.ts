@@ -1,7 +1,6 @@
 export interface ISubItem {
     id: string;
     title: string;
-    status?: 'idle' | 'loading' | 'success';
     progress?: number;
 }
 
@@ -30,13 +29,12 @@ export const itemsDownloading: IItem[] = [
     {
         id: 'leagues',
         title: 'Loading Leagues',
-        status: 'idle',
+        status: 'loading',
         visible: true,
         response: [
             {
                 id: 'league-delta',
                 title: 'League Delta',
-                status: 'success',
                 progress: 1,
             },
             {

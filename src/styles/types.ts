@@ -3,7 +3,7 @@ import { type IStyle } from 'react-native-theme-mk';
 export type IPalette =
     | 'black03'
     | 'black01'
-    | 'balck2660'
+    | 'balck26'
     | 'whiteFF'
     | 'whiteFA'
     | 'whiteF6'

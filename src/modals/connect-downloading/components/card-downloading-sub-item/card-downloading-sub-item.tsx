@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 
 import { View } from 'react-native';
 
-import { Text, Icon } from '~/core';
+import { Text, Icon, Loading, TextGradient } from '~/core';
 import { useTheme } from '~/styles';
 
 import { useStyles } from './card-downloading-sub-item.style';
@@ -12,12 +12,23 @@ export const CardDownloadingSubItem = memo(({ item }: ICardDownloadingSubItemPro
     const theme = useTheme();
     const s = useStyles();
 
-    const isSuccess = item.status === 'success';
+    const isSuccess = item.progress === 1;
+    const isLoading = item.progress !== 1 && item.progress !== 0;
 
     return (
         <View style={s.item}>
-            <Text type="bodyS" text={item.title} color={isSuccess ? theme.colors.primary : theme.colors.textSecondary} />
+            {!isLoading && <Text text={item.title} color={isSuccess ? theme.colors.primary : theme.colors.textSecondary} />}
+            {isLoading && (
+                <TextGradient
+                    colors={[theme.palette.whiteFA60, theme.palette.whiteFA, theme.palette.whiteFA60]}
+                    locations={[0, 0.05, 1]}
+                    text={item.title}
+                    loading
+                    duration={1000}
+                />
+            )}
             {!!isSuccess && <Icon name="check" color={theme.colors.primary} size={12} />}
+            {!!isLoading && <Loading style={s.loading} color={theme.colors.text} size={12} />}
         </View>
     );
 });

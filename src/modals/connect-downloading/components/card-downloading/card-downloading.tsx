@@ -20,11 +20,12 @@ export const CardDownloading = memo(({ item }: ICardDownloadingProps) => {
 
     return (
         <Card key={item.id} style={s.card}>
+            {!!isLoading && <FlickeringGrid style={s.flickeringGrid} />}
             <View style={[s.cardInfo, isSubItems && s.cardInfoSubItems]}>
-                {!!isLoading && <FlickeringGrid style={s.flickeringGrid} />}
                 <View style={s.cardContent}>
                     <View style={s.cardText}>
                         {!isLoading && <Text text={item.title} color={isSuccess ? theme.colors.primary : theme.colors.textSecondary} />}
+                        {isLoading && isSubItems && <Text text={item.title} />}
                         {isLoading && !isSubItems && (
                             <TextGradient
                                 colors={[theme.palette.whiteFA60, theme.palette.whiteFA, theme.palette.whiteFA60]}

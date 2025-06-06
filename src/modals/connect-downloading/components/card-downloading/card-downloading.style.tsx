@@ -53,7 +53,7 @@ export const useStyles = ThemeManager.createStyleSheet(({ theme }) => ({
         height: 28,
     },
     subItems: {
-        backgroundColor: theme.palette.balck2660,
+        backgroundColor: theme.palette.balck26,
         marginHorizontal: theme.spacing.XL,
         borderRadius: theme.radius.S,
         padding: theme.spacing.S,
