@@ -7,6 +7,7 @@ export interface ISquare {
     color: string;
     maxOpacity: number;
     flickerChance: number;
+    duration?: number;
 }
 
 export interface IFlickingGridProps {
@@ -16,4 +17,5 @@ export interface IFlickingGridProps {
     maxOpacity?: number;
     flickerChance?: number;
     style?: IViewStyle;
+    duration?: number;
 }

@@ -1,17 +1,29 @@
 import React, { useEffect, useState } from 'react';
 
-import Animated, { useSharedValue, useAnimatedStyle, withTiming, withRepeat } from 'react-native-reanimated';
+import Animated, { useSharedValue, useAnimatedStyle, withTiming, runOnJS } from 'react-native-reanimated';
 
-import { useStyles } from './flicking-grid.style';
+import { FLICKERING_COLOR, useStyles } from './flicking-grid.style';
 import { type IFlickingGridProps, type ISquare } from './flicking-grid.type';
 
-const Square = ({ index, squareSize, gridGap, color, maxOpacity, flickerChance }: ISquare) => {
+const Square = ({ index, squareSize, gridGap, color, maxOpacity, flickerChance, duration = 200 }: ISquare) => {
     const sharedOpacity = useSharedValue(1);
 
-    useEffect(() => {
+    const startFlickerAnimation = () => {
         if (Math.random() < flickerChance) {
-            sharedOpacity.value = withRepeat(withTiming(Math.random() * maxOpacity, { duration: 500 }), -1, true);
+            sharedOpacity.value = withTiming(Math.random() * maxOpacity, { duration: duration }, () => {
+                // Run the next animation cycle using a callback
+                runOnJS(startFlickerAnimation)();
+            });
+        } else {
+            // If flickerChance fails, wait and retry
+            setTimeout(() => {
+                runOnJS(startFlickerAnimation)();
+            }, duration);
         }
+    };
+
+    useEffect(() => {
+        startFlickerAnimation();
     }, [sharedOpacity, flickerChance, maxOpacity]);
 
     const animatedStyle = useAnimatedStyle(() => ({
@@ -29,9 +41,10 @@ export const FlickeringGrid = ({
     style,
     squareSize = 4,
     gridGap = 6,
-    color = '#6B7280',
+    color = FLICKERING_COLOR,
     maxOpacity = 0.5,
-    flickerChance = 0.1,
+    flickerChance = 0.2,
+    duration = 200,
 }: IFlickingGridProps) => {
     const s = useStyles();
     const [layout, setLayout] = useState({ width: 0, height: 0 });
@@ -55,6 +68,7 @@ export const FlickeringGrid = ({
                     color={color}
                     maxOpacity={maxOpacity}
                     flickerChance={flickerChance}
+                    duration={duration}
                 />
             ))}
         </Animated.View>
