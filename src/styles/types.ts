@@ -3,6 +3,7 @@ import { type IStyle } from 'react-native-theme-mk';
 export type IPalette =
     | 'black03'
     | 'black01'
+    | 'balck2660'
     | 'whiteFF'
     | 'whiteFA'
     | 'whiteF6'
@@ -14,6 +15,7 @@ export type IPalette =
     | 'grey62'
     | 'green4D'
     | 'grey14'
+    | 'green40'
     | 'green26'
     | 'red'
     | 'transparent';
@@ -32,6 +34,7 @@ export type IColor =
     | 'placeholder'
     | 'card'
     | 'border'
+    | 'separator'
     | 'input';
 
 export interface IThemeTextStyle {

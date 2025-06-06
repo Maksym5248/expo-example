@@ -3,6 +3,7 @@ import { type IPalette } from './types';
 export const palette: Record<IPalette, string> = {
     black03: '#030303',
     black01: 'rgba(19, 22, 22, 0.1)',
+    balck2660: 'rgba(38, 38, 38, 0.6)',
     whiteFF: '#FFFFFF',
     whiteF6: '#FFFFF6',
     whiteFA: '#FFFFF6',
@@ -15,6 +16,7 @@ export const palette: Record<IPalette, string> = {
     grey14: '#141414',
     green4D: '#B5FF4D',
     green26: '#262626',
+    green40: '#404040',
     red: 'red',
     transparent: 'rgba(250, 250, 250, 0)',
 };

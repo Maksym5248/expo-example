@@ -2,11 +2,20 @@ import { ThemeManager } from '~/styles';
 
 export const useStyles = ThemeManager.createStyleSheet(({ theme }) => ({
     card: {
-        height: 80,
         marginBottom: theme.spacing.S,
-        paddingHorizontal: theme.spacing.XL,
         marginHorizontal: theme.spacing.L,
+        flexDirection: 'column',
+        alignItems: 'stretch',
+    },
+    cardInfo: {
+        padding: theme.spacing.XL,
         position: 'relative',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    cardInfoSubItems: {
+        paddingBottom: theme.spacing.M,
     },
     flickeringGrid: {
         position: 'absolute',
@@ -23,6 +32,7 @@ export const useStyles = ThemeManager.createStyleSheet(({ theme }) => ({
     },
     cardText: {
         flexDirection: 'column',
+        gap: theme.spacing.S,
     },
     title: {
         marginTop: theme.spacing.XL,
@@ -41,5 +51,18 @@ export const useStyles = ThemeManager.createStyleSheet(({ theme }) => ({
         flex: 0,
         width: 28,
         height: 28,
+    },
+    subItems: {
+        backgroundColor: theme.palette.balck2660,
+        marginHorizontal: theme.spacing.XL,
+        borderRadius: theme.radius.S,
+        padding: theme.spacing.S,
+        marginBottom: theme.spacing.XL,
+    },
+    separator: {
+        height: 1,
+        marginVertical: theme.spacing.S,
+        width: '100%',
+        backgroundColor: theme.colors.separator,
     },
 }));

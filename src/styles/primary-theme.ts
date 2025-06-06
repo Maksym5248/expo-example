@@ -25,6 +25,7 @@ export const themeBase: IBaseThemeSchema = {
         input: palette.whiteFA15,
         card: palette.grey14,
         border: palette.green26,
+        separator: palette.green40,
     },
     fonts: {
         heading: fonts.TacticSansMed,

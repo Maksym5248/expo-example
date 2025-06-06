@@ -9,5 +9,6 @@ export const useStyles = ThemeManager.createStyleSheet(() => ({
         zIndex: 0,
         flexWrap: 'wrap',
         flexDirection: 'row',
+        overflow: 'hidden',
     },
 }));

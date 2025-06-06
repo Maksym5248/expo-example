@@ -70,8 +70,8 @@ export const FlickeringGrid = ({
         setLayout({ width, height });
     };
 
-    const numColumns = Math.floor(layout.width / (squareSize + gridGap));
-    const numRows = Math.floor(layout.height / (squareSize + gridGap));
+    const numColumns = Math.ceil(layout.width / (squareSize + gridGap));
+    const numRows = Math.ceil(layout.height / (squareSize + gridGap));
 
     return (
         <Animated.View style={[s.grid, style]} onLayout={onLayout}>

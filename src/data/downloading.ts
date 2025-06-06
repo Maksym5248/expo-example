@@ -2,6 +2,7 @@ export interface ISubItem {
     id: string;
     title: string;
     status?: 'idle' | 'loading' | 'success';
+    progress?: number;
 }
 
 export interface IItem {
@@ -23,6 +24,7 @@ export const itemsDownloading: IItem[] = [
         id: 'slates',
         title: 'Finding Active Slates',
         status: 'loading',
+        response: '4 leagues found',
         visible: true,
     },
     {
@@ -30,6 +32,29 @@ export const itemsDownloading: IItem[] = [
         title: 'Loading Leagues',
         status: 'idle',
         visible: true,
+        response: [
+            {
+                id: 'league-delta',
+                title: 'League Delta',
+                status: 'success',
+                progress: 1,
+            },
+            {
+                id: 'league-alpha',
+                title: 'League Alpha',
+                progress: 0.5,
+            },
+            {
+                id: 'league-gamma',
+                title: 'League Gamma',
+                progress: 0,
+            },
+            {
+                id: 'league-beta',
+                title: 'League Beta',
+                progress: 0,
+            },
+        ],
     },
     {
         id: 'drafts',
