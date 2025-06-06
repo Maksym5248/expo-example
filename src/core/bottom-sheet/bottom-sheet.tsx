@@ -9,6 +9,7 @@ import Animated, {
     withTiming,
     runOnJS,
     interpolate,
+    Easing,
 } from 'react-native-reanimated';
 
 import { useTranslate } from '~/localization';
@@ -62,7 +63,8 @@ export const BottomSheet = forwardRef<IBottomSheetRef, IBottomSheetProps>(
             offset.value = withTiming(
                 toValue,
                 {
-                    duration: 250,
+                    duration: 300,
+                    easing: Easing.out(Easing.exp),
                 },
                 () => {
                     runOnJS(jsFunction)(toValue, canceled);
@@ -71,18 +73,19 @@ export const BottomSheet = forwardRef<IBottomSheetRef, IBottomSheetProps>(
         };
 
         const eventHandler = useAnimatedGestureHandler({
-            onStart: event => {
-                offset.value = event.translationY > 0 ? event.translationY : offset.value;
+            onStart: (_, ctx: { startY: number }) => {
+                ctx.startY = offset.value;
             },
-            onActive: event => {
-                offset.value = event.translationY > 0 ? event.translationY : offset.value;
+            onActive: (event, ctx) => {
+                offset.value = ctx.startY + event.translationY;
+                offset.value = Math.max(0, Math.min(offset.value, height.value));
             },
             onEnd: event => {
-                const isFastGesture = Math.abs(event.velocityY) > 300;
-                const isYEnough = event.translationY > 50;
+                const isFastGesture = Math.abs(event.velocityY) > 800;
+                const isYEnough = event.translationY > height.value * 0.25;
 
                 const toValue = isYEnough || isFastGesture ? height.value : 0;
-                onAnimate(toValue, true);
+                onAnimate(toValue, toValue === height.value);
             },
         });
 
@@ -100,7 +103,8 @@ export const BottomSheet = forwardRef<IBottomSheetRef, IBottomSheetProps>(
             height.value = maxHeight;
 
             offset.value = withTiming(0, {
-                duration: 200,
+                duration: 400,
+                easing: Easing.out(Easing.exp),
             });
 
             isVisible.value = true;

@@ -2,6 +2,7 @@ export interface ISubItem {
     id: string;
     title: string;
     progress?: number;
+    time: number;
 }
 
 export interface IItem {
@@ -9,6 +10,7 @@ export interface IItem {
     title: string;
     visible: boolean;
     status?: 'idle' | 'loading' | 'success';
+    time: number;
     response?: string | ISubItem[];
 }
 
@@ -18,6 +20,7 @@ export const itemsDownloading: IItem[] = [
         title: 'Connecting to platform',
         status: 'success',
         visible: true,
+        time: 1000,
     },
     {
         id: 'slates',
@@ -25,32 +28,38 @@ export const itemsDownloading: IItem[] = [
         status: 'loading',
         response: '4 leagues found',
         visible: true,
+        time: 1000,
     },
     {
         id: 'leagues',
         title: 'Loading Leagues',
         status: 'loading',
         visible: true,
+        time: 1000,
         response: [
             {
                 id: 'league-delta',
                 title: 'League Delta',
                 progress: 1,
+                time: 1000,
             },
             {
                 id: 'league-alpha',
                 title: 'League Alpha',
                 progress: 0.5,
+                time: 1000,
             },
             {
                 id: 'league-gamma',
                 title: 'League Gamma',
                 progress: 0,
+                time: 1000,
             },
             {
                 id: 'league-beta',
                 title: 'League Beta',
                 progress: 0,
+                time: 1000,
             },
         ],
     },
@@ -59,11 +68,13 @@ export const itemsDownloading: IItem[] = [
         title: 'Downloading Drafts',
         status: 'idle',
         visible: true,
+        time: 1000,
     },
     {
         id: 'calculating',
         title: 'Calculating Exposures / Data',
         status: 'idle',
         visible: true,
+        time: 1000,
     },
 ];
