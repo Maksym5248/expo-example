@@ -1,3 +1,5 @@
 export enum MODALS {
-    CONNECTION = 'connection',
+    CONNECT_EMAIL = 'connect-email',
+    CONNECT_CODE = 'connect-code',
+    CONNECT_DOWNLOADING = 'connect-downloading',
 }

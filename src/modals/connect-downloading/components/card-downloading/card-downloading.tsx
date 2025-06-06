@@ -3,7 +3,7 @@ import React, { memo } from 'react';
 import { isString } from 'lodash';
 import { View } from 'react-native';
 
-import { Text, Card, Icon, Loading } from '~/components';
+import { Text, Card, Icon, Loading } from '~/core';
 import { useTranslate } from '~/localization';
 import { useTheme } from '~/styles';
 

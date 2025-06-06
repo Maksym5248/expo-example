@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View } from 'react-native';
 
-import { Button, Card, Icon, Image, Scroll, Svg, Text } from '~/components';
 import { MODALS } from '~/constants';
+import { Button, Card, Icon, Image, Scroll, Svg, Text } from '~/core';
 import { useTranslate } from '~/localization';
 import { Modal } from '~/services';
 import { items } from '~/store';
@@ -19,19 +19,11 @@ export function HomeScreen() {
     const s = useStyles();
     const theme = useTheme();
     const t = useTranslate();
-    const [checked, setChecked] = useState<string[]>([]);
+    const [checked] = useState<string[]>([]);
 
     const onCheckItem = (itemId: string) => {
-        Modal.show(MODALS.CONNECTION, {
+        Modal.show(MODALS.CONNECT_EMAIL, {
             id: itemId,
-            onCreated: () => {
-                setChecked(prev => {
-                    if (prev.includes(itemId)) {
-                        return prev.filter(id => id !== itemId);
-                    }
-                    return [...prev, itemId];
-                });
-            },
         });
     };
 

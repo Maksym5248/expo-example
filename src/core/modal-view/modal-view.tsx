@@ -4,10 +4,10 @@ import ModalUI from 'react-native-modal';
 
 import { useAndroidBackButton } from '~/hooks';
 
-import { useStyles } from './modal.styles';
-import { type IModalProps } from './modal.type';
+import { useStyles } from './modal-view.styles';
+import { type IModalProps } from './modal-view.type';
 
-export const Modal = ({ children, isVisible, hide, ...rest }: IModalProps) => {
+export const ModalView = ({ children, isVisible, hide, ...rest }: IModalProps) => {
     const s = useStyles();
 
     useAndroidBackButton(() => {

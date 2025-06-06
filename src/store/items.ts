@@ -26,3 +26,11 @@ export const items = [
         image: require('../../assets/image/unknown.png'),
     },
 ];
+
+const getItemById = (id: string) => {
+    return items.find(item => item.id === id);
+};
+
+export const store = {
+    getItemById,
+};
