@@ -17,7 +17,7 @@ export const CardDownloadingSubItem = memo(({ item }: ICardDownloadingSubItemPro
     const isLoading = item.status === 'loading';
 
     return (
-        <View style={s.item}>
+        <View style={s.item} key={item.id}>
             <View style={s.itemContent}>
                 {!isLoading && <Text text={item.title} color={isSuccess ? theme.colors.primary : theme.colors.textSecondary} />}
                 {isLoading && (

@@ -38,6 +38,14 @@ export function HomeScreen() {
     useEffect(() => {
         Modal.show(MODALS.CONNECT_DOWNLOADING, {
             id: items[0].id,
+            onCreated: () => {
+                setChecked(prev => {
+                    if (prev.includes(items[0].id)) {
+                        return prev.filter(id => id !== items[0].id);
+                    }
+                    return [...prev, items[0].id];
+                });
+            },
         });
     }, []);
 

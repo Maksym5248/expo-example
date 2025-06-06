@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 
-import { isArray, isString } from 'lodash';
+import { isArray } from 'lodash';
 import { View } from 'react-native';
 
 import { FlickeringGrid, Text, Card, Icon, Loading, TextGradient } from '~/core';
@@ -16,7 +16,8 @@ export const CardDownloading = memo(({ item }: ICardDownloadingProps) => {
 
     const isSuccess = item.status === 'success';
     const isLoading = item.status === 'loading';
-    const isSubItems = isArray(item.response);
+    const isSubItems = isArray(item.items);
+    const isResponse = !!item.visibleResponse;
 
     return (
         <Card key={item.id} style={s.card}>
@@ -33,25 +34,24 @@ export const CardDownloading = memo(({ item }: ICardDownloadingProps) => {
                                 text={item.title}
                             />
                         )}
-                        {!!isString(item.response) && <Text type="bodyS" text={item.response} color={theme.colors.textSecondary} />}
+                        {!!item.response && isResponse && <Text type="bodyS" text={item.response} color={theme.colors.textSecondary} />}
                     </View>
                 </View>
                 {!!isSuccess && <Icon name={'check'} color={theme.colors.primary} size={16} style={s.icon} />}
                 {!!isLoading && !isSubItems && <Loading style={s.loading} color={theme.colors.text} />}
             </View>
-            {isSubItems && (
+            {isSubItems && isLoading && (
                 <View style={s.subItems}>
-                    {isArray(item.response) &&
-                        item.response?.map((subItem, i) => {
-                            const isLast = (item.response?.length ?? 1) - 1 === i;
+                    {item.items?.map((subItem, i) => {
+                        const isLast = (item.response?.length ?? 1) - 1 === i;
 
-                            return (
-                                <>
-                                    <CardDownloadingSubItem item={subItem} key={item.id} />
-                                    {!isLast && <View style={s.separator} />}
-                                </>
-                            );
-                        })}
+                        return (
+                            <>
+                                <CardDownloadingSubItem item={subItem} key={item.id} />
+                                {!isLast && <View style={s.separator} key={`${item.id}-separator`} />}
+                            </>
+                        );
+                    })}
                 </View>
             )}
         </Card>

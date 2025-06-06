@@ -9,9 +9,11 @@ export interface IItem {
     id: string;
     title: string;
     visible: boolean;
+    visibleResponse?: boolean;
     status?: 'idle' | 'loading' | 'success';
     time: number;
-    response?: string | ISubItem[];
+    response?: string;
+    items?: ISubItem[];
 }
 
 export const itemsDownloading: IItem[] = [
@@ -20,33 +22,36 @@ export const itemsDownloading: IItem[] = [
         title: 'Connecting to platform',
         status: 'success',
         visible: true,
-        time: 1000,
+        time: 2000,
     },
     {
         id: 'slates',
         title: 'Finding Active Slates',
-        status: 'loading',
+        status: 'idle',
         response: '4 leagues found',
         visible: true,
-        time: 1000,
+        visibleResponse: false,
+        time: 2000,
     },
     {
         id: 'leagues',
         title: 'Loading Leagues',
-        status: 'loading',
-        visible: true,
-        time: 1000,
-        response: [
+        status: 'idle',
+        response: '4 leagues found',
+        visible: false,
+        visibleResponse: false,
+        time: 2000,
+        items: [
             {
                 id: 'league-delta',
                 title: 'League Delta',
-                status: 'success',
+                status: 'idle',
                 time: 5000,
             },
             {
                 id: 'league-alpha',
                 title: 'League Alpha',
-                status: 'loading',
+                status: 'idle',
                 time: 5000,
             },
             {
@@ -68,13 +73,13 @@ export const itemsDownloading: IItem[] = [
         title: 'Downloading Drafts',
         status: 'idle',
         visible: true,
-        time: 1000,
+        time: 2000,
     },
     {
         id: 'calculating',
         title: 'Calculating Exposures / Data',
         status: 'idle',
         visible: true,
-        time: 1000,
+        time: 2000,
     },
 ];
