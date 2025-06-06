@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo } from 'react';
 
 import { View } from 'react-native';
 
@@ -13,10 +13,8 @@ export const CardDownloadingSubItem = memo(({ item }: ICardDownloadingSubItemPro
     const theme = useTheme();
     const s = useStyles();
 
-    const isSuccess = item.progress === 1;
-    const isLoading = item.progress !== 1 && item.progress !== 0;
-
-    useEffect(() => {}, [item.progress]);
+    const isSuccess = item.status === 'success';
+    const isLoading = item.status === 'loading';
 
     return (
         <View style={s.item}>
