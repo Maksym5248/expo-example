@@ -5,12 +5,25 @@ import Animated, { useSharedValue, useAnimatedStyle, withTiming, runOnJS, cancel
 import { FLICKERING_COLOR, useStyles } from './flicking-grid.style';
 import { type IFlickingGridProps, type ISquare } from './flicking-grid.type';
 
-const Square = ({ index, squareSize, gridGap, color, maxOpacity, flickerChance, duration = 200 }: ISquare) => {
+const generateOpacity = (min: number, max: number) => {
+    const opacity = Math.random();
+
+    if (opacity < min) {
+        return min;
+    }
+
+    if (opacity > max) {
+        return max;
+    }
+
+    return opacity;
+};
+const Square = ({ index, squareSize, gridGap, color, maxOpacity, minOpacity, flickerChance, duration = 200 }: ISquare) => {
     const sharedOpacity = useSharedValue(1);
 
     const startFlickerAnimation = () => {
         if (Math.random() < flickerChance) {
-            sharedOpacity.value = withTiming(Math.random() * maxOpacity, { duration: duration }, () => {
+            sharedOpacity.value = withTiming(generateOpacity(minOpacity, maxOpacity), { duration: duration }, () => {
                 runOnJS(startFlickerAnimation)();
             });
         } else {
@@ -26,7 +39,7 @@ const Square = ({ index, squareSize, gridGap, color, maxOpacity, flickerChance, 
         return () => {
             cancelAnimation(sharedOpacity);
         };
-    }, [sharedOpacity, flickerChance, maxOpacity]);
+    }, [sharedOpacity, flickerChance, minOpacity, maxOpacity]);
 
     const animatedStyle = useAnimatedStyle(() => ({
         opacity: sharedOpacity.value,
@@ -45,8 +58,9 @@ export const FlickeringGrid = ({
     gridGap = 6,
     color = FLICKERING_COLOR,
     maxOpacity = 0.5,
+    minOpacity = 0.1,
     flickerChance = 0.2,
-    duration = 200,
+    duration = 100,
 }: IFlickingGridProps) => {
     const s = useStyles();
     const [layout, setLayout] = useState({ width: 0, height: 0 });
@@ -69,6 +83,7 @@ export const FlickeringGrid = ({
                     gridGap={gridGap}
                     color={color}
                     maxOpacity={maxOpacity}
+                    minOpacity={minOpacity}
                     flickerChance={flickerChance}
                     duration={duration}
                 />

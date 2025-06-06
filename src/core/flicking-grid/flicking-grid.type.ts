@@ -6,6 +6,7 @@ export interface ISquare {
     gridGap: number;
     color: string;
     maxOpacity: number;
+    minOpacity: number;
     flickerChance: number;
     duration?: number;
 }
@@ -15,6 +16,7 @@ export interface IFlickingGridProps {
     gridGap?: number;
     color?: string;
     maxOpacity?: number;
+    minOpacity?: number;
     flickerChance?: number;
     style?: IViewStyle;
     duration?: number;
