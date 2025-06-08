@@ -53,19 +53,19 @@ export const useSteps = (onFinished: () => void) => {
         update('leagues', { status: 'loading', visible: true });
 
         updateSub('leagues', 'league-delta', { status: 'loading' });
-        await delay(getSubItemTime('leagues', 'league-delta') + 1000);
+        await delay(getSubItemTime('leagues', 'league-delta') + 300);
         updateSub('leagues', 'league-delta', { status: 'success' });
 
         updateSub('leagues', 'league-alpha', { status: 'loading' });
-        await delay(getSubItemTime('leagues', 'league-alpha') + 1000); // Adding a delay to simulate staggered loading
+        await delay(getSubItemTime('leagues', 'league-alpha') + 300);
         updateSub('leagues', 'league-alpha', { status: 'success' });
 
         updateSub('leagues', 'league-gamma', { status: 'loading' });
-        await delay(getSubItemTime('leagues', 'league-gamma') + 1000);
+        await delay(getSubItemTime('leagues', 'league-gamma') + 300);
         updateSub('leagues', 'league-gamma', { status: 'success' });
 
         updateSub('leagues', 'league-beta', { status: 'loading' });
-        await delay(getSubItemTime('leagues', 'league-beta') + 1000);
+        await delay(getSubItemTime('leagues', 'league-beta') + 300);
         updateSub('leagues', 'league-beta', { status: 'success' });
 
         update('leagues', { status: 'success', visibleResponse: true });
