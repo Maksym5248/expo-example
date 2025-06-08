@@ -22,7 +22,7 @@ export const Timer = memo(({ item }: ITimerProps) => {
                 }
                 return prevTime - 100;
             });
-        }, 100);
+        }, 50);
 
         return () => clearInterval(interval);
     }, [item.time]);
