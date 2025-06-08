@@ -19,7 +19,7 @@ const generateOpacity = (min: number, max: number) => {
     return opacity;
 };
 const Square = ({ index, squareSize, gridGap, color, maxOpacity, minOpacity, flickerChance, duration = 200 }: ISquare) => {
-    const sharedOpacity = useSharedValue(1);
+    const sharedOpacity = useSharedValue(generateOpacity(minOpacity, maxOpacity));
 
     const startFlickerAnimation = () => {
         if (Math.random() < flickerChance) {
